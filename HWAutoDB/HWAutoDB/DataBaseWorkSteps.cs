@@ -39,8 +39,10 @@ namespace HWAutoDB
         {
             DataTable responseTable = _scenarioContext.Get<DataTable>("PersonsTable");
             int numOfRows = responseTable.Rows.Count;
-            string lastAuthors = responseTable.Rows[numOfRows - 1]["FirstName"].ToString();
-            Assert.AreEqual(lastAuthors, table.Rows[0]["FirstName"]);
+            string lastRowFirsName = responseTable.Rows[numOfRows - 1]["FirstName"].ToString();
+            string lastRowLastName = responseTable.Rows[numOfRows - 1]["LastName"].ToString();
+            Assert.AreEqual(table.Rows[0]["FirstName"], lastRowFirsName);
+            Assert.AreEqual(table.Rows[0]["LastName"], lastRowLastName);
         }
 
         [When(@"I delete last row in table '(.*)'")]
@@ -53,12 +55,12 @@ namespace HWAutoDB
             _sqlHelper.MakeQuery(query);
         }
 
-        [When(@"I try to create row in table '(.*)' with data longer then 20 chars")]
-        public void WhenITryToCreateRowInTableWithDataLongerThenChars(string tableName, Table table)
+        [When(@"I try to create row in table Persons '(.*)'")]
+        public void WhenITryToCreateRowInTablePersons(string tableName, Table table)
         {
             string query = $"BEGIN TRY INSERT INTO {tableName} (FirstName, LastName, Age, City) " +
                 $"VALUES ('{table.Rows[0]["FirstName"]}', '{table.Rows[0]["LastName"]}', " +
-                $"{table.Rows[0]["Age"]}, '{table.Rows[0]["City"]}') " +
+                $"'{table.Rows[0]["Age"]}', '{table.Rows[0]["City"]}') " +
                 $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
             DataTable responseTable = _sqlHelper.MakeQuery(query);
             _scenarioContext["ErrorTable"] = responseTable;
@@ -69,7 +71,52 @@ namespace HWAutoDB
         {
             DataTable responseTable = _scenarioContext.Get<DataTable>("ErrorTable");
             int responseErrorNumber = int.Parse(responseTable.Rows[0]["ErrorNumber"].ToString());
-            Assert.AreEqual(responseErrorNumber, expectedErrorNumber);
+            Assert.AreEqual(expectedErrorNumber, responseErrorNumber);
         }
+
+        [When(@"I create row in table '(.*)' without FirstName field")]
+        public void WhenICreateRowInTableWithoutFirstNameField(string tableName, Table table)
+        {
+            string query = $"BEGIN TRY INSERT INTO {tableName} (LastName, Age, City) " +
+                $"VALUES ('{table.Rows[0]["LastName"]}', " +
+                $"'{table.Rows[0]["Age"]}', '{table.Rows[0]["City"]}') " +
+                $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            _scenarioContext["ErrorTable"] = responseTable;
+        }
+
+        [When(@"I create row in table '(.*)' without LastName field")]
+        public void WhenICreateRowInTableWithoutLastNameField(string tableName, Table table)
+        {
+            string query = $"BEGIN TRY INSERT INTO {tableName} (FirstName, Age, City) " +
+                $"VALUES ('{table.Rows[0]["FirstName"]}', " +
+                $"'{table.Rows[0]["Age"]}', '{table.Rows[0]["City"]}') " +
+                $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            _scenarioContext["ErrorTable"] = responseTable;
+        }
+
+        [When(@"I create row in table '(.*)' without Age field")]
+        public void WhenICreateRowInTableWithoutAgeField(string tableName, Table table)
+        {
+            string query = $"BEGIN TRY INSERT INTO {tableName} (FirstName, LastName, City) " +
+                $"VALUES ('{table.Rows[0]["FirstName"]}', '{table.Rows[0]["LastName"]}', " +
+                $"'{table.Rows[0]["City"]}') " +
+                $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            _scenarioContext["ErrorTable"] = responseTable;
+        }
+
+        [When(@"I create row in table '(.*)' without City field")]
+        public void WhenICreateRowInTableWithoutCityField(string tableName, Table table)
+        {
+            string query = $"BEGIN TRY INSERT INTO {tableName} (FirstName, LastName, Age) " +
+                $"VALUES ('{table.Rows[0]["FirstName"]}', '{table.Rows[0]["LastName"]}', " +
+                $"'{table.Rows[0]["Age"]}') " +
+                $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            _scenarioContext["ErrorTable"] = responseTable;
+        }
+
     }
 }

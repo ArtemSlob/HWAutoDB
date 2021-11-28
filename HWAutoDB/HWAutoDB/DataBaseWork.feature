@@ -3,7 +3,7 @@
 	I want the database to correctly process queries
 
 @InsertData
-Scenario Outline: It is possible to insert data to XSHOPX DB
+Scenario: It is possible to insert data in XSHOPX table Persons
 	When I create row in table 'Persons' with data
 		| FirstName   | LastName   | Age   | City   |
 		| <firstName> | <lastName> | <age> | <city> |
@@ -18,8 +18,8 @@ Scenario Outline: It is possible to insert data to XSHOPX DB
 		| Worthington | McGurn   | 36  | Santa Clara |
 
 @InvalidData
-Scenario Outline: Insert invalid data to XSHOPX DB
-	When I try to create row in table 'Persons' with data longer then 20 chars
+Scenario Outline: It is impossible to insert invalid data longer then 20 chars in XSHOPX table Persons
+	When I try to create row in table Persons 'Persons'
 		| FirstName   | LastName   | Age   | City   |
 		| <firstName> | <lastName> | <age> | <city> |
 	Then I get an error message '2628' in response
@@ -29,3 +29,38 @@ Scenario Outline: Insert invalid data to XSHOPX DB
 		| LongerThanTwentyChars | Nevredim              | 19  | Lviv                  |
 		| Vadim                 | LongerThanTwentyChars | 34  | Odessa                |
 		| Galka                 | Sraka                 | 59  | LongerThanTwentyChars |
+
+@InvalidData
+Scenario: It is impossible to insert invalid age in string format in XSHOPX table Persons
+	When I try to create row in table Persons 'Persons'
+		| FirstName | LastName | Age     | City   |
+		| Galka     | Sraka    | ImYoung | Odessa |
+	Then I get an error message '245' in response
+
+@EmptyData
+Scenario: It is impossible to insert data without not filling in the required field FirstName in table Persons
+	When I create row in table 'Persons' without FirstName field
+		| LastName | Age | City   |
+		| Nevredim | 34  | Odessa |
+	Then I get an error message '515' in response
+
+@EmptyData
+Scenario: It is impossible to insert data without not filling in the required field LastName in table Persons
+	When I create row in table 'Persons' without LastName field
+		| FirstName | Age | City   |
+		| Vadim     | 34  | Odessa |
+	Then I get an error message '515' in response
+
+	@EmptyData
+Scenario: It is impossible to insert data without not filling in the required field Age in table Persons
+	When I create row in table 'Persons' without Age field
+		| FirstName | LastName | City   |
+		| Vadim     | Nevredim | Odessa |
+	Then I get an error message '515' in response
+
+@EmptyData
+Scenario: It is impossible to insert data without not filling in the required field City in table Persons
+	When I create row in table 'Persons' without City field
+		| FirstName | LastName | Age |
+		| Vadim     | Nevredim | 34  |
+	Then I get an error message '515' in response
