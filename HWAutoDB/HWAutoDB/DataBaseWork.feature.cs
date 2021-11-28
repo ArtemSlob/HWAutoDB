@@ -76,11 +76,21 @@ namespace HWAutoDB
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("It is possible to insert data to XSHOPX DB")]
         [NUnit.Framework.CategoryAttribute("InsertData")]
-        public virtual void ItIsPossibleToInsertDataToXSHOPXDB()
+        [NUnit.Framework.TestCaseAttribute("Worthington", "McGurn", "36", "Santa Clara", null)]
+        public virtual void ItIsPossibleToInsertDataToXSHOPXDB(string firstName, string lastName, string age, string city, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "InsertData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to insert data to XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
@@ -102,11 +112,98 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table1.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 7
+ testRunner.When("I create row in table \'Persons\' with data", ((string)(null)), table1, "When ");
+#line hidden
 #line 10
  testRunner.When("I select whole \'Persons\' table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table2.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 11
+ testRunner.Then("Last row in table Persons contains data", ((string)(null)), table2, "Then ");
+#line hidden
 #line 14
  testRunner.When("I delete last row in table \'Persons\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Insert invalid data to XSHOPX DB")]
+        [NUnit.Framework.CategoryAttribute("InvalidData")]
+        [NUnit.Framework.TestCaseAttribute("LongerThanTwentyChars", "Nevredim", "19", "Lviv", null)]
+        [NUnit.Framework.TestCaseAttribute("Vadim", "LongerThanTwentyChars", "34", "Odessa", null)]
+        [NUnit.Framework.TestCaseAttribute("Galka", "Sraka", "59", "LongerThanTwentyChars", null)]
+        public virtual void InsertInvalidDataToXSHOPXDB(string firstName, string lastName, string age, string city, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "InvalidData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert invalid data to XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table3.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 22
+ testRunner.When("I try to create row in table \'Persons\' with data longer then 20 chars", ((string)(null)), table3, "When ");
+#line hidden
+#line 25
+ testRunner.Then("I get an error message \'2628\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

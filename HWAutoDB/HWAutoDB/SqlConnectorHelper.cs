@@ -18,7 +18,7 @@ namespace HWAutoDB
             SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
             DataTable table = new DataTable();
             adapter.Fill(table);
-            if (!query.StartsWith("SELECT")) return null;
+            if (!(query.StartsWith("SELECT") || query.StartsWith("BEGIN TRY"))) return null;
             return table;
         }
 

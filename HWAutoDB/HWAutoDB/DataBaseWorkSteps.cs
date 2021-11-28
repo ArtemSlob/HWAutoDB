@@ -52,5 +52,24 @@ namespace HWAutoDB
             string query = $"DELETE FROM {tableName} WHERE PersonID={lastPersonId};";
             _sqlHelper.MakeQuery(query);
         }
+
+        [When(@"I try to create row in table '(.*)' with data longer then 20 chars")]
+        public void WhenITryToCreateRowInTableWithDataLongerThenChars(string tableName, Table table)
+        {
+            string query = $"BEGIN TRY INSERT INTO {tableName} (FirstName, LastName, Age, City) " +
+                $"VALUES ('{table.Rows[0]["FirstName"]}', '{table.Rows[0]["LastName"]}', " +
+                $"{table.Rows[0]["Age"]}, '{table.Rows[0]["City"]}') " +
+                $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            _scenarioContext["ErrorTable"] = responseTable;
+        }
+
+        [Then(@"I get an error message '(.*)' in response")]
+        public void ThenIGetAnErrorMessageInResponse(int expectedErrorNumber)
+        {
+            DataTable responseTable = _scenarioContext.Get<DataTable>("ErrorTable");
+            int responseErrorNumber = int.Parse(responseTable.Rows[0]["ErrorNumber"].ToString());
+            Assert.AreEqual(responseErrorNumber, expectedErrorNumber);
+        }
     }
 }
