@@ -3,7 +3,7 @@
 	I want the database to correctly process queries
 
 @InsertData
-Scenario:  It is possible to insert data to XSHOPX DB
+Scenario: It is possible to insert data in XSHOPX table Persons
 	When I create row in table 'Persons' with data
 		| FirstName   | LastName   | Age   | City   |
 		| <firstName> | <lastName> | <age> | <city> |
