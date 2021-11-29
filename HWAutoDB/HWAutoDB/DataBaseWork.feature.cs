@@ -353,16 +353,16 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field FirstNa" +
-            "me in table Persons")]
-        [NUnit.Framework.CategoryAttribute("EmptyData")]
-        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldFirstNameInTablePersons()
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert invalid orderPrice in string format in XSHOPX table Or" +
+            "ders")]
+        [NUnit.Framework.CategoryAttribute("InvalidData")]
+        public virtual void ItIsImpossibleToInsertInvalidOrderPriceInStringFormatInXSHOPXTableOrders()
         {
             string[] tagsOfScenario = new string[] {
-                    "EmptyData"};
+                    "InvalidData"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field FirstNa" +
-                    "me in table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert invalid orderPrice in string format in XSHOPX table Or" +
+                    "ders", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 59
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -384,34 +384,34 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
-                            "LastName",
-                            "Age",
-                            "City"});
+                            "OrderId",
+                            "Product",
+                            "OrderPrice"});
                 table8.AddRow(new string[] {
-                            "Nevredim",
-                            "34",
-                            "Odessa"});
+                            "29",
+                            "Avocado",
+                            "StoUAH"});
 #line 60
- testRunner.When("I create row in table \'Persons\' without FirstName field", ((string)(null)), table8, "When ");
+ testRunner.When("I try to create row in table Orders \'Orders\'", ((string)(null)), table8, "When ");
 #line hidden
 #line 63
- testRunner.Then("I get an error message \'515\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get an error message \'544\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field LastNam" +
-            "e in table Persons")]
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field Product" +
+            " in table Orders")]
         [NUnit.Framework.CategoryAttribute("EmptyData")]
-        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldLastNameInTablePersons()
+        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldProductInTableOrders()
         {
             string[] tagsOfScenario = new string[] {
                     "EmptyData"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field LastNam" +
-                    "e in table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field Product" +
+                    " in table Orders", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 66
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -433,34 +433,32 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
-                            "FirstName",
-                            "Age",
-                            "City"});
+                            "OrderId",
+                            "OrderPrice"});
                 table9.AddRow(new string[] {
-                            "Vadim",
-                            "34",
-                            "Odessa"});
+                            "29",
+                            "100"});
 #line 67
- testRunner.When("I create row in table \'Persons\' without LastName field", ((string)(null)), table9, "When ");
+ testRunner.When("I create row in table \'Orders\' without Product field", ((string)(null)), table9, "When ");
 #line hidden
 #line 70
- testRunner.Then("I get an error message \'515\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get an error message \'544\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field Age in " +
-            "table Persons")]
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field FirstNa" +
+            "me in table Persons")]
         [NUnit.Framework.CategoryAttribute("EmptyData")]
-        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldAgeInTablePersons()
+        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldFirstNameInTablePersons()
         {
             string[] tagsOfScenario = new string[] {
                     "EmptyData"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field Age in " +
-                    "table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field FirstNa" +
+                    "me in table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 73
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -482,15 +480,15 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
-                            "FirstName",
                             "LastName",
+                            "Age",
                             "City"});
                 table10.AddRow(new string[] {
-                            "Vadim",
                             "Nevredim",
+                            "34",
                             "Odessa"});
 #line 74
- testRunner.When("I create row in table \'Persons\' without Age field", ((string)(null)), table10, "When ");
+ testRunner.When("I create row in table \'Persons\' without FirstName field", ((string)(null)), table10, "When ");
 #line hidden
 #line 77
  testRunner.Then("I get an error message \'515\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -500,16 +498,16 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field City in" +
-            " table Persons")]
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field LastNam" +
+            "e in table Persons")]
         [NUnit.Framework.CategoryAttribute("EmptyData")]
-        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldCityInTablePersons()
+        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldLastNameInTablePersons()
         {
             string[] tagsOfScenario = new string[] {
                     "EmptyData"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field City in" +
-                    " table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field LastNam" +
+                    "e in table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 80
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -532,14 +530,14 @@ this.ScenarioInitialize(scenarioInfo);
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
                             "FirstName",
-                            "LastName",
-                            "Age"});
+                            "Age",
+                            "City"});
                 table11.AddRow(new string[] {
                             "Vadim",
-                            "Nevredim",
-                            "34"});
+                            "34",
+                            "Odessa"});
 #line 81
- testRunner.When("I create row in table \'Persons\' without City field", ((string)(null)), table11, "When ");
+ testRunner.When("I create row in table \'Persons\' without LastName field", ((string)(null)), table11, "When ");
 #line hidden
 #line 84
  testRunner.Then("I get an error message \'515\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
@@ -549,16 +547,16 @@ this.ScenarioInitialize(scenarioInfo);
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is impossible to insert invalid orderPrice in string format in XSHOPX table Or" +
-            "ders")]
-        [NUnit.Framework.CategoryAttribute("InvalidData")]
-        public virtual void ItIsImpossibleToInsertInvalidOrderPriceInStringFormatInXSHOPXTableOrders()
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field Age in " +
+            "table Persons")]
+        [NUnit.Framework.CategoryAttribute("EmptyData")]
+        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldAgeInTablePersons()
         {
             string[] tagsOfScenario = new string[] {
-                    "InvalidData"};
+                    "EmptyData"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert invalid orderPrice in string format in XSHOPX table Or" +
-                    "ders", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field Age in " +
+                    "table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 87
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -580,34 +578,34 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
-                            "OrderId",
-                            "Product",
-                            "OrderPrice"});
+                            "FirstName",
+                            "LastName",
+                            "City"});
                 table12.AddRow(new string[] {
-                            "29",
-                            "Avocado",
-                            "StoUAH"});
+                            "Vadim",
+                            "Nevredim",
+                            "Odessa"});
 #line 88
- testRunner.When("I try to create row in table Orders \'Orders\'", ((string)(null)), table12, "When ");
+ testRunner.When("I create row in table \'Persons\' without Age field", ((string)(null)), table12, "When ");
 #line hidden
 #line 91
- testRunner.Then("I get an error message \'544\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get an error message \'515\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field Product" +
-            " in table Orders")]
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field City in" +
+            " table Persons")]
         [NUnit.Framework.CategoryAttribute("EmptyData")]
-        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldProductInTableOrders()
+        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldCityInTablePersons()
         {
             string[] tagsOfScenario = new string[] {
                     "EmptyData"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field Product" +
-                    " in table Orders", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field City in" +
+                    " table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 94
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -629,16 +627,18 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
-                            "OrderId",
-                            "OrderPrice"});
+                            "FirstName",
+                            "LastName",
+                            "Age"});
                 table13.AddRow(new string[] {
-                            "29",
-                            "100"});
+                            "Vadim",
+                            "Nevredim",
+                            "34"});
 #line 95
- testRunner.When("I create row in table \'Orders\' without Product field", ((string)(null)), table13, "When ");
+ testRunner.When("I create row in table \'Persons\' without City field", ((string)(null)), table13, "When ");
 #line hidden
 #line 98
- testRunner.Then("I get an error message \'544\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("I get an error message \'515\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -55,6 +55,20 @@ Scenario: It is impossible to insert invalid age in string format in XSHOPX tabl
 		| Galka     | Sraka    | ImYoung | Odessa |
 	Then I get an error message '245' in response
 
+@InvalidData
+Scenario: It is impossible to insert invalid orderPrice in string format in XSHOPX table Orders
+	When I try to create row in table Orders 'Orders'
+		| OrderId | Product | OrderPrice |
+		| 29      | Avocado | StoUAH     |
+	Then I get an error message '544' in response
+
+@EmptyData
+Scenario: It is impossible to insert data without not filling in the required field Product in table Orders
+	When I create row in table 'Orders' without Product field
+		| OrderId | OrderPrice |
+		| 29      | 100        |
+	Then I get an error message '544' in response
+
 @EmptyData
 Scenario: It is impossible to insert data without not filling in the required field FirstName in table Persons
 	When I create row in table 'Persons' without FirstName field
@@ -82,17 +96,3 @@ Scenario: It is impossible to insert data without not filling in the required fi
 		| FirstName | LastName | Age |
 		| Vadim     | Nevredim | 34  |
 	Then I get an error message '515' in response
-
-@InvalidData
-Scenario: It is impossible to insert invalid orderPrice in string format in XSHOPX table Orders
-	When I try to create row in table Orders 'Orders'
-		| OrderId | Product | OrderPrice |
-		| 29      | Avocado | StoUAH     |
-	Then I get an error message '544' in response
-
-@EmptyData
-Scenario: It is impossible to insert data without not filling in the required field Product in table Orders
-	When I create row in table 'Orders' without Product field
-		| OrderId | OrderPrice |
-		| 29      | 100        |
-	Then I get an error message '544' in response
