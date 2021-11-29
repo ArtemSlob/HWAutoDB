@@ -76,11 +76,21 @@ namespace HWAutoDB
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("It is possible to insert data to XSHOPX DB")]
         [NUnit.Framework.CategoryAttribute("InsertData")]
-        public virtual void ItIsPossibleToInsertDataToXSHOPXDB()
+        [NUnit.Framework.TestCaseAttribute("Worthington", "McGurn", "36", "Santa Clara", null)]
+        public virtual void ItIsPossibleToInsertDataToXSHOPXDB(string firstName, string lastName, string age, string city, string[] exampleTags)
         {
-            string[] tagsOfScenario = new string[] {
+            string[] @__tags = new string[] {
                     "InsertData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to insert data to XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
 #line 6
 this.ScenarioInitialize(scenarioInfo);
@@ -102,11 +112,362 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+                TechTalk.SpecFlow.Table table1 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table1.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 7
+ testRunner.When("I create row in table \'Persons\' with data", ((string)(null)), table1, "When ");
+#line hidden
 #line 10
  testRunner.When("I select whole \'Persons\' table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
+                TechTalk.SpecFlow.Table table2 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table2.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 11
+ testRunner.Then("Last row in table Persons contains data", ((string)(null)), table2, "Then ");
+#line hidden
 #line 14
  testRunner.When("I delete last row in table \'Persons\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("It is possible to update data in XSHOPX DB")]
+        [NUnit.Framework.CategoryAttribute("UpdateData")]
+        [NUnit.Framework.TestCaseAttribute("Worthington", "McGurn", "36", "Santa Clara", "Vadim", "Nevredim", "19", "Lviv", null)]
+        public virtual void ItIsPossibleToUpdateDataInXSHOPXDB(string firstName, string lastName, string age, string city, string firstNameNew, string lastNameNew, string ageNew, string cityNew, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "UpdateData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
+            argumentsOfScenario.Add("firstNameNew", firstNameNew);
+            argumentsOfScenario.Add("lastNameNew", lastNameNew);
+            argumentsOfScenario.Add("ageNew", ageNew);
+            argumentsOfScenario.Add("cityNew", cityNew);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to update data in XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table3.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 22
+ testRunner.When("I create row in table \'Persons\' with data", ((string)(null)), table3, "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table4.AddRow(new string[] {
+                            string.Format("{0}", firstNameNew),
+                            string.Format("{0}", lastNameNew),
+                            string.Format("{0}", ageNew),
+                            string.Format("{0}", cityNew)});
+#line 25
+ testRunner.When("I update row in table \'Persons\' with new data", ((string)(null)), table4, "When ");
+#line hidden
+#line 28
+ testRunner.When("I select whole \'Persons\' table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table5 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table5.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 29
+ testRunner.Then("Last row in table Persons contains data", ((string)(null)), table5, "Then ");
+#line hidden
+#line 32
+ testRunner.When("I delete last row in table \'Persons\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Insert invalid data to XSHOPX DB")]
+        [NUnit.Framework.CategoryAttribute("InvalidData")]
+        [NUnit.Framework.TestCaseAttribute("LongerThanTwentyChars", "Nevredim", "19", "Lviv", null)]
+        [NUnit.Framework.TestCaseAttribute("Vadim", "LongerThanTwentyChars", "34", "Odessa", null)]
+        [NUnit.Framework.TestCaseAttribute("Galka", "Sraka", "59", "LongerThanTwentyChars", null)]
+        public virtual void InsertInvalidDataToXSHOPXDB(string firstName, string lastName, string age, string city, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "InvalidData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert invalid data to XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 40
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table6.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 41
+ testRunner.When("I try to create row in table \'Persons\' with data longer then 20 chars", ((string)(null)), table6, "When ");
+#line hidden
+#line 44
+ testRunner.Then("I get an error message \'2628\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Empty insert to XSHOPX DB")]
+        [NUnit.Framework.CategoryAttribute("EmptyData")]
+        [NUnit.Framework.TestCaseAttribute("13", "Avocado", "", null)]
+        [NUnit.Framework.TestCaseAttribute("", "", "75", null)]
+        public virtual void EmptyInsertToXSHOPXDB(string orderId, string product, string orderPrice, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "EmptyData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("orderId", orderId);
+            argumentsOfScenario.Add("product", product);
+            argumentsOfScenario.Add("orderPrice", orderPrice);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Empty insert to XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 56
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "OrderId",
+                            "Product",
+                            "OrderPrice"});
+                table7.AddRow(new string[] {
+                            string.Format("{0}", orderId),
+                            string.Format("{0}", product),
+                            string.Format("{0}", orderPrice)});
+#line 57
+ testRunner.When("I create row in table \'Orders\' with empty field", ((string)(null)), table7, "When ");
+#line hidden
+#line 60
+ testRunner.Then("I get an error message \'\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Insert invalid age to XSHOPX DB")]
+        [NUnit.Framework.CategoryAttribute("InvalidData")]
+        [NUnit.Framework.TestCaseAttribute("Galka", "Sraka", "ImYoung", "Odessa", null)]
+        public virtual void InsertInvalidAgeToXSHOPXDB(string firstName, string lastName, string age, string city, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "InvalidData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert invalid age to XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 68
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table8.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 69
+ testRunner.When("I try to create row in table \'Persons\' with string insert to \'age\' field", ((string)(null)), table8, "When ");
+#line hidden
+#line 72
+ testRunner.Then("I get an error message \'\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Insert invalid orderPrice to XSHOPX DB")]
+        [NUnit.Framework.CategoryAttribute("InvalidData")]
+        [NUnit.Framework.TestCaseAttribute("13", "Avocado", "stoUAH", null)]
+        public virtual void InsertInvalidOrderPriceToXSHOPXDB(string orderId, string product, string orderPrice, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "InvalidData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("orderId", orderId);
+            argumentsOfScenario.Add("product", product);
+            argumentsOfScenario.Add("orderPrice", orderPrice);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Insert invalid orderPrice to XSHOPX DB", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 79
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "OrderId",
+                            "Product",
+                            "OrderPrice"});
+                table9.AddRow(new string[] {
+                            string.Format("{0}", orderId),
+                            string.Format("{0}", product),
+                            string.Format("{0}", orderPrice)});
+#line 80
+ testRunner.When("I try to create row in table \'Orders\' with string insert to \'orderPrice\' field", ((string)(null)), table9, "When ");
+#line hidden
+#line 83
+ testRunner.Then("I get an error message \'\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

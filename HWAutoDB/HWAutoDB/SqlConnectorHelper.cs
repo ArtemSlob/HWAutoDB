@@ -9,7 +9,7 @@ namespace HWAutoDB
 
         public void ConnectToDataBase()
         {
-            connection = new SqlConnection("Server = DESKTOP-L7EBTQH\\SQLEXPRESS; Database = XSHOPX; Integrated Security = true");
+            connection = new SqlConnection("Server = HOME-PC\\SQLEXPRESS; Database = XSHOPX; Integrated Security = true");
             connection.Open();
         }
 
