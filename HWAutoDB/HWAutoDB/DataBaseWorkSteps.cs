@@ -5,7 +5,6 @@ using TechTalk.SpecFlow;
 namespace HWAutoDB
 {
     [Binding]
-
     public class DataBaseWorkSteps
     {
         private readonly ScenarioContext _scenarioContext;
