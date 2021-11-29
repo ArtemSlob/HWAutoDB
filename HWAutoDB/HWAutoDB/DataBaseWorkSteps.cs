@@ -118,5 +118,19 @@ namespace HWAutoDB
             _scenarioContext["ErrorTable"] = responseTable;
         }
 
+        [When(@"I update last row in table '(.*)' with new data")]
+        public void WhenIUpdateLastRowInTableWithNewData(string tableName, Table table)
+        {
+            string selectQuery = $"SELECT * FROM {tableName}";
+            DataTable responseTable = _sqlHelper.MakeQuery(selectQuery);
+            _scenarioContext["PersonsTable"] = responseTable;
+            int numOfRows = responseTable.Rows.Count;
+            int lastPersonId = int.Parse(responseTable.Rows[numOfRows - 1]["PersonID"].ToString());
+            string updateQuery = $"UPDATE {tableName} " +
+                $"SET FirstName = '{table.Rows[0]["FirstName"]}', LastName = '{table.Rows[0]["LastName"]}', " +
+                $"Age = {table.Rows[0]["Age"]}, City = '{table.Rows[0]["City"]}' " +
+                $"WHERE PersonID={lastPersonId};";
+            _sqlHelper.MakeQuery(updateQuery);
+        }
     }
 }

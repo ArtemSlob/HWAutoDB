@@ -455,6 +455,98 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("It is possible to update data in XSHOPX table Persons")]
+        [NUnit.Framework.CategoryAttribute("UpdateData")]
+        [NUnit.Framework.TestCaseAttribute("Worthington", "McGurn", "36", "Santa Clara", "Vadim", "Nevredim", "19", "Lviv", null)]
+        public virtual void ItIsPossibleToUpdateDataInXSHOPXTablePersons(string firstName, string lastName, string age, string city, string firstNameNew, string lastNameNew, string ageNew, string cityNew, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "UpdateData"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("firstName", firstName);
+            argumentsOfScenario.Add("lastName", lastName);
+            argumentsOfScenario.Add("age", age);
+            argumentsOfScenario.Add("city", city);
+            argumentsOfScenario.Add("firstNameNew", firstNameNew);
+            argumentsOfScenario.Add("lastNameNew", lastNameNew);
+            argumentsOfScenario.Add("ageNew", ageNew);
+            argumentsOfScenario.Add("cityNew", cityNew);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is possible to update data in XSHOPX table Persons", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 69
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table9.AddRow(new string[] {
+                            string.Format("{0}", firstName),
+                            string.Format("{0}", lastName),
+                            string.Format("{0}", age),
+                            string.Format("{0}", city)});
+#line 70
+ testRunner.When("I create row in table \'Persons\' with data", ((string)(null)), table9, "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table10 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table10.AddRow(new string[] {
+                            string.Format("{0}", firstNameNew),
+                            string.Format("{0}", lastNameNew),
+                            string.Format("{0}", ageNew),
+                            string.Format("{0}", cityNew)});
+#line 73
+ testRunner.When("I update last row in table \'Persons\' with new data", ((string)(null)), table10, "When ");
+#line hidden
+#line 76
+ testRunner.When("I select whole \'Persons\' table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+                TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
+                            "FirstName",
+                            "LastName",
+                            "Age",
+                            "City"});
+                table11.AddRow(new string[] {
+                            string.Format("{0}", firstNameNew),
+                            string.Format("{0}", lastNameNew),
+                            string.Format("{0}", ageNew),
+                            string.Format("{0}", cityNew)});
+#line 77
+ testRunner.Then("Last row in table Persons contains data", ((string)(null)), table11, "Then ");
+#line hidden
+#line 80
+ testRunner.When("I delete last row in table \'Persons\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore

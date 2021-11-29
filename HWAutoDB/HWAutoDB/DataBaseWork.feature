@@ -51,7 +51,7 @@ Scenario: It is impossible to insert data without not filling in the required fi
 		| Vadim     | 34  | Odessa |
 	Then I get an error message '515' in response
 
-	@EmptyData
+@EmptyData
 Scenario: It is impossible to insert data without not filling in the required field Age in table Persons
 	When I create row in table 'Persons' without Age field
 		| FirstName | LastName | City   |
@@ -64,3 +64,21 @@ Scenario: It is impossible to insert data without not filling in the required fi
 		| FirstName | LastName | Age |
 		| Vadim     | Nevredim | 34  |
 	Then I get an error message '515' in response
+
+@UpdateData
+Scenario: It is possible to update data in XSHOPX table Persons
+	When I create row in table 'Persons' with data
+		| FirstName   | LastName   | Age   | City   |
+		| <firstName> | <lastName> | <age> | <city> |
+	When I update last row in table 'Persons' with new data
+		| FirstName      | LastName      | Age      | City      |
+		| <firstNameNew> | <lastNameNew> | <ageNew> | <cityNew> |
+	When I select whole 'Persons' table
+	Then Last row in table Persons contains data
+		| FirstName      | LastName      | Age      | City      |
+		| <firstNameNew> | <lastNameNew> | <ageNew> | <cityNew> |
+	When I delete last row in table 'Persons'
+
+	Examples:
+		| firstName   | lastName | age | city        | firstNameNew | lastNameNew | ageNew | cityNew |
+		| Worthington | McGurn   | 36  | Santa Clara | Vadim        | Nevredim    | 19     | Lviv    |
