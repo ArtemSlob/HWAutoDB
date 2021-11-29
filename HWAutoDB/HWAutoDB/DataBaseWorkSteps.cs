@@ -105,6 +105,28 @@ namespace HWAutoDB
             DataTable responseTable = _sqlHelper.MakeQuery(query);
             _scenarioContext["ErrorTable"] = responseTable;
         }
+        
+        [When(@"I try to create row in table Orders '(.*)'")]
+        public void WhenITryToCreateRowInTableOrders(string tableName, Table table)
+        {
+            string query = $"BEGIN TRY INSERT INTO {tableName} (OrderId, Product, OrderPrice) " +
+                $"VALUES ('{table.Rows[0]["OrderId"]}', '{table.Rows[0]["Product"]}', " +
+                $"'{table.Rows[0]["OrderPrice"]}') " +
+                $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            _scenarioContext["ErrorTable"] = responseTable;
+        }
+        
+        [When(@"I create row in table '(.*)' without Product field")]
+        public void WhenICreateRowInTableWithoutProductField(string tableName, Table table)
+        {
+            string query = $"BEGIN TRY INSERT INTO {tableName} (OrderId, OrderPrice) " +
+                $"VALUES ('{table.Rows[0]["OrderId"]}'," +
+                $"'{table.Rows[0]["OrderPrice"]}') " +
+                $"END TRY BEGIN CATCH SELECT ERROR_NUMBER() AS ErrorNumber; END CATCH;";
+            DataTable responseTable = _sqlHelper.MakeQuery(query);
+            _scenarioContext["ErrorTable"] = responseTable;           
+        }               
 
         [When(@"I create row in table '(.*)' without City field")]
         public void WhenICreateRowInTableWithoutCityField(string tableName, Table table)

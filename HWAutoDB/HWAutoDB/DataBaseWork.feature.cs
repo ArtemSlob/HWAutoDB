@@ -547,6 +547,102 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert invalid orderPrice in string format in XSHOPX table Or" +
+            "ders")]
+        [NUnit.Framework.CategoryAttribute("InvalidData")]
+        public virtual void ItIsImpossibleToInsertInvalidOrderPriceInStringFormatInXSHOPXTableOrders()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "InvalidData"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert invalid orderPrice in string format in XSHOPX table Or" +
+                    "ders", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 87
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table12 = new TechTalk.SpecFlow.Table(new string[] {
+                            "OrderId",
+                            "Product",
+                            "OrderPrice"});
+                table12.AddRow(new string[] {
+                            "29",
+                            "Avocado",
+                            "StoUAH"});
+#line 88
+ testRunner.When("I try to create row in table Orders \'Orders\'", ((string)(null)), table12, "When ");
+#line hidden
+#line 91
+ testRunner.Then("I get an error message \'544\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("It is impossible to insert data without not filling in the required field Product" +
+            " in table Orders")]
+        [NUnit.Framework.CategoryAttribute("EmptyData")]
+        public virtual void ItIsImpossibleToInsertDataWithoutNotFillingInTheRequiredFieldProductInTableOrders()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "EmptyData"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("It is impossible to insert data without not filling in the required field Product" +
+                    " in table Orders", null, tagsOfScenario, argumentsOfScenario, this._featureTags);
+#line 94
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            bool isScenarioIgnored = default(bool);
+            bool isFeatureIgnored = default(bool);
+            if ((tagsOfScenario != null))
+            {
+                isScenarioIgnored = tagsOfScenario.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((this._featureTags != null))
+            {
+                isFeatureIgnored = this._featureTags.Where(__entry => __entry != null).Where(__entry => String.Equals(__entry, "ignore", StringComparison.CurrentCultureIgnoreCase)).Any();
+            }
+            if ((isScenarioIgnored || isFeatureIgnored))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+                TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
+                            "OrderId",
+                            "OrderPrice"});
+                table13.AddRow(new string[] {
+                            "29",
+                            "100"});
+#line 95
+ testRunner.When("I create row in table \'Orders\' without Product field", ((string)(null)), table13, "When ");
+#line hidden
+#line 98
+ testRunner.Then("I get an error message \'544\' in response", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
